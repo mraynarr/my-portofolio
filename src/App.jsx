@@ -35,11 +35,11 @@ function App() {
       desc: "Platform e-commerce klasik berbasis PHP dengan manajemen katalog produk.",
       tech: ["PHP", "CSS", "MySQL", "JS"],
       images: [
-        "src/assets/img/shoping-kuy/sk-hero.png", 
-        "src/assets/img/shoping-kuy/sk-menu.png", 
-        "src/assets/img/shoping-kuy/sk-about.png", 
-        "src/assets/img/shoping-kuy/sk-kategori.png", 
-        "src/assets/img/shoping-kuy/sk-contact.png", 
+        "/img/shoping-kuy/sk-hero.png", 
+        "/img/shoping-kuy/sk-menu.png", 
+        "/img/shoping-kuy/sk-about.png", 
+        "/img/shoping-kuy/sk-kategori.png", 
+        "/img/shoping-kuy/sk-contact.png", 
       ],
       link: "http://localhost/shoping%20kuy/landing.php"
     }, 
@@ -48,11 +48,11 @@ function App() {
       desc: "Website Rental Mobil dan Motor dengan pemesanan digital",
       tech: ["Laravel", "Bootstrap", "JS", "MySQL"],
       images: [
-        "src/assets/img/rental/rental-home.png",  
-        "src/assets/img/rental/rental-product.png",  
-        "src/assets/img/rental/rental-order.png",  
-        "src/assets/img/rental/rental-about.png",  
-        "src/assets/img/rental/rental-admin.png",  
+        "/img/rental/rental-home.png",  
+        "/img/rental/rental-product.png",  
+        "/img/rental/rental-order.png",  
+        "/img/rental/rental-about.png",  
+        "/img/rental/rental-admin.png",  
       ],
       link: "http://localhost/shoping%20kuy/landing.php"
     }, 
@@ -61,11 +61,11 @@ function App() {
       desc: "Menganalisis +19.000 transaksi retail untuk mengoptimalkan strategi penjualan dan efektivitas promosi.",
       tech: ["Looker Studio", "DB Browser", "Excel"],
       images: [
-        "src/assets/img/data1/looker1.png", 
-        "src/assets/img/data1/looker2.png", 
-        "src/assets/img/data1/looker3.png", 
-        "src/assets/img/data1/looker4.png", 
-        "src/assets/img/data1/data5.png", 
+        "/img/data1/looker1.png", 
+        "/img/data1/looker2.png", 
+        "/img/data1/looker3.png", 
+        "/img/data1/looker4.png", 
+        "/img/data1/data5.png", 
       ],
       link: "http://localhost/shoping%20kuy/landing.php"
     }, 
@@ -74,10 +74,10 @@ function App() {
       desc: "Website UKM PENALARAN & KREATIFITAS UPN VETERAN Jawa Timur",
       tech: ["Wordpress"],
       images: [
-        "src/assets/img/ukm/ukm-home.png", 
-        "src/assets/img/ukm/ukm-jumlah.png", 
-        "src/assets/img/ukm/ukm-bidang.png", 
-        "src/assets/img/ukm/ukm-about.png", 
+        "/img/ukm/ukm-home.png", 
+        "/img/ukm/ukm-jumlah.png", 
+        "/img/ukm/ukm-bidang.png", 
+        "/img/ukm/ukm-about.png", 
       ],
       link: "http://localhost/shoping%20kuy/landing.php"
     }, 
@@ -86,11 +86,11 @@ function App() {
       desc: "Final project semester 3 membuat design aplikasi pelaporan warga",
       tech: ["Figma"],
       images: [
-        "src/assets/img/figma1/fp-3.png",
-        "src/assets/img/figma1/fp-4.png",
-        "src/assets/img/figma1/figma-wf.png",
-        "src/assets/img/figma1/fp-1.png",
-        "src/assets/img/figma1/fp-2.png",
+        "/img/figma1/fp-3.png",
+        "/img/figma1/fp-4.png",
+        "/img/figma1/figma-wf.png",
+        "/img/figma1/fp-1.png",
+        "/img/figma1/fp-2.png",
       ],
       link: "http://localhost/shoping%20kuy/landing.php"
     }, 
@@ -99,9 +99,9 @@ function App() {
       desc: "Website portofolio sebagai tugas Sekolah Menengah Kejurusan",
       tech: ["HTML", "Tailwind", "JS"],
       images: [
-        "src/assets/img/pf/pf-home.png",  
-        "src/assets/img/pf/pf-contact.png",  
-        "src/assets/img/pf/pf-blog.png",  
+        "/img/pf/pf-home.png",  
+        "/img/pf/pf-contact.png",  
+        "/img/pf/pf-blog.png",  
       ],
       link: "http://localhost/shoping%20kuy/landing.php"
     }, 
@@ -236,7 +236,7 @@ function App() {
             <div className="relative w-64 h-64 md:w-96 md:h-96">
               <div className="absolute inset-0 bg-indigo-300 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
               <div className="relative w-full h-full overflow-hidden rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-4 border-indigo-600 shadow-2xl bg-slate-800">
-                <img src="src/assets/img/profile.png" alt="Raynar" className="w-full h-full object-cover" />
+                <img src="/img/profile.png" alt="Raynar" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>
