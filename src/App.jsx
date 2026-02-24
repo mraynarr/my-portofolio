@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavAnimation } from './hooks/useNavAnimation';
-import { useScrollAnimation } from './hooks/useScrollAnimation'; // Pastikan path benar
+import { useScrollAnimation } from './hooks/useScrollAnimation'; 
 import { Linkedin, Github, Mail } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, Navigation } from 'swiper/modules'; // Tambah Navigation
+import { Pagination, Autoplay, Navigation } from 'swiper/modules'; 
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation'; // Tambah CSS Navigation
+import 'swiper/css/navigation'; 
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { tabStyle, containerRef, handleMouseEnter, resetTab } = useNavAnimation('.contact-btn');
   
-  // Inisialisasi hook animasi
   const heroAnim = useScrollAnimation();
   const aboutAnim = useScrollAnimation();
   const projectAnim = useScrollAnimation();
@@ -160,8 +159,7 @@ function App() {
                 opacity: tabStyle.opacity,
                 top: '50%',
                 transform: 'translateY(-50%)'
-              }}
-            />
+              }}/>
             <div className="flex items-center space-x-2 text-sm font-semibold text-white">
               <a href="#home" onMouseEnter={handleMouseEnter} className="px-5 py-2 rounded-full z-10">Home</a>
               <a href="#about" onMouseEnter={handleMouseEnter} className="px-5 py-2 rounded-full z-10">About</a>
@@ -183,17 +181,14 @@ function App() {
 
           <div className={`fixed inset-x-0 top-0 bg-slate-900 shadow-2xl transition-all duration-500 md:hidden z-[60] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
             <div className="relative flex flex-col items-center pt-24 pb-12 space-y-4" onMouseLeave={resetTab}>
-              <div 
-                className="absolute bg-indigo-600 rounded-xl transition-all duration-300 pointer-events-none z-0"
-                style={{
+              <div className="absolute bg-indigo-600 rounded-xl transition-all duration-300 pointer-events-none z-0" style={{
                   top: `${tabStyle.top}px`,
                   height: `${tabStyle.height}px`,
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '85%',
                   opacity: tabStyle.opacity
-                }}
-              />
+                }}/>
               {['Home', 'About', 'Projects', 'Skills'].map((item) => (
                 <a key={item} href={`#${item.toLowerCase()}`} onMouseEnter={handleMouseEnter} onClick={() => setIsMenuOpen(false)} className="relative z-10 text-xl font-bold text-slate-300 py-3 w-[85%] text-center">
                   {item}
@@ -223,7 +218,7 @@ function App() {
               Information Systems Undergraduate specializing in data analytics and software development.
             </p>
             <div className="flex flex-row gap-4">
-              <a href="mailto:muhammadraynar@example.com" className="flex-1 sm:flex-none px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all text-center">
+              <a href="raynarham23@gmail.com" className="flex-1 sm:flex-none px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all text-center">
                 Hubungi Saya
               </a>
               <a href="#projects" className="flex-1 sm:flex-none px-8 py-3 border-2 border-slate-500 text-slate-300 font-bold rounded-xl hover:border-indigo-500 transition-all text-center">
@@ -244,18 +239,9 @@ function App() {
       </section>
 
       {/* --- ABOUT SECTION --- */}
-      <section id="about" className="min-h-[100dvh] w-full flex flex-col bg-slate-800/20 px-6 justify-center overflow-hidden">
-        <div 
-          ref={aboutAnim.elementRef} 
-          className={`max-w-6xl mx-auto w-full ${aboutAnim.animationClass} flex flex-col 
-            /* Penarik ke atas: */
-            -mt-12 md:-mt-20`} 
-        >
-          {/* -mt-12 di mobile dan -mt-20 di desktop akan menarik seluruh konten About 
-            ke atas secara halus tanpa merusak struktur grid.
-          */}
+      <section id="about" className="min-h-screen w-full flex flex-col bg-slate-800/20 px-6 py-24 md:py-32 justify-center overflow-hidden">
+        <div ref={aboutAnim.elementRef} className={`max-w-6xl mx-auto w-full ${aboutAnim.animationClass} flex flex-col`}>
           
-          {/* Section Heading */}
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-indigo-500 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-2">
               Get To Know
@@ -266,11 +252,8 @@ function App() {
             </h1>
           </div>
 
-          {/* Grid System */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-            {/* ... isi card tetap sama seperti versi favoritmu ... */}
-            
-            {/* Card 1: Tentang Saya */}
+
             <div className="bg-slate-900/50 p-7 md:p-8 rounded-3xl border border-slate-800 hover:border-indigo-500/50 transition-colors duration-300 shadow-xl flex flex-col justify-center">
               <h3 className="text-indigo-500 font-bold tracking-wider uppercase text-base md:text-lg mb-1">
                 Sekilas
@@ -283,7 +266,6 @@ function App() {
               </p>
             </div>
 
-            {/* Card 2: Let's Connect */}
             <div className="bg-slate-900/50 p-7 md:p-8 rounded-3xl border border-slate-800 hover:border-indigo-500/50 transition-colors duration-300 shadow-xl flex flex-col justify-between">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4">
@@ -296,13 +278,11 @@ function App() {
                 </p>
               </div>
 
-              {/* Social Icons */}
               <div className="flex gap-4 md:gap-5 flex-wrap">
-                {/* ... map social icons yang ada WhatsApp-nya ... */}
                 {[
                   { name: 'LinkedIn', icon: <Linkedin size={22} />, url: '#' },
                   { name: 'GitHub', icon: <Github size={22} />, url: '#' },
-                  { name: 'Email', icon: <Mail size={22} />, url: 'mailto:muhammadraynar@example.com' },
+                  { name: 'Email', icon: <Mail size={22} />, url: 'mailto:raynarham23@gmail.com' },
                   { 
                     name: 'WhatsApp', 
                     icon: (
@@ -332,50 +312,39 @@ function App() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] -z-10"></div>
         
         <div ref={projectAnim.elementRef} className={`max-w-6xl mx-auto w-full ${projectAnim.animationClass} -mt-4 md:-mt-16`}>
-          {/* Section Heading */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+
             <div className="text-left">
-              <h2 className="text-indigo-500 font-bold tracking-[0.2em] uppercase text-lg mb-2">
-                Portfolio
-              </h2>
-              <h1 className="text-4xl md:text-5xl font-black text-white">
-                Featured Projects
-              </h1>
+              <h2 className="text-indigo-500 font-bold tracking-[0.2em] uppercase text-lg mb-2">Portfolio</h2>
+              <h1 className="text-4xl md:text-5xl font-black text-white">Featured Projects</h1>
             </div>
             <p className="text-slate-400 max-w-md text-sm md:text-base italic border-l-2 border-indigo-500 pl-4">
               Kumpulan proyek yang saya kerjakan baik di sekolah, kuliah, maupun saat mengikuti bootcamp.
             </p>
           </div>
 
-          {/* Project Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(showAllProjects ? allProjects : allProjects.slice(0, 3)).map((project, index) => (
-              <div key={index} className="group relative bg-slate-900/40 rounded-3xl border border-slate-700 overflow-hidden hover:border-indigo-500/50 transition-all duration-500 shadow-2xl flex flex-col"
-              >
-                {/* --- BAGIAN CAROUSEL DENGAN PANAH --- */}
+              <div key={index} className="group relative bg-slate-900/40 rounded-3xl border border-slate-700 overflow-hidden hover:border-indigo-500/50 transition-all duration-500 shadow-2xl flex flex-col">
+
                 <div className="relative h-52 w-full overflow-hidden bg-slate-800 group/swiper">
                   <Swiper
-                    modules={[Pagination, Autoplay, Navigation]} // Tambah Navigation di sini
+                    modules={[Pagination, Autoplay, Navigation]} 
                     pagination={{ clickable: true }}
-                    navigation={true} // Aktifkan panah
+                    navigation={true} 
                     autoplay={{ delay: 4000, disableOnInteraction: false }}
-                    className="h-full w-full"
-                  >
+                    className="h-full w-full">
+
                     {project.images.map((img, imgIdx) => (
                       <SwiperSlide key={imgIdx}>
                         <div className="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                        <img 
-                          src={img} 
-                          alt={`${project.title} - ${imgIdx}`}
-                          className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+                        <img src={img} alt={`${project.title} - ${imgIdx}`} className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                         />
                       </SwiperSlide>
                     ))}
                   </Swiper>
 
-                  {/* Custom CSS untuk Panah & Pagination */}
                   <style>{`
-                    /* Sembunyikan panah default, hanya muncul saat hover pada foto */
                     .swiper-button-next, .swiper-button-prev {
                       color: white !important;
                       transform: scale(0.35);
@@ -399,7 +368,6 @@ function App() {
                   `}</style>
                 </div>
 
-                {/* --- CONTENT & BUTTON INVERSE COLOR --- */}
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex gap-2 mb-4 flex-wrap">
                     {project.tech.map((t) => (
@@ -416,17 +384,8 @@ function App() {
                     {project.desc}
                   </p>
 
-                  {/* --- BUTTON VIEW DETAILS (INVERSE) --- */}
                   <div className="mt-auto">
-                    <a 
-                      href={project.link} 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      /* Warna Default: bg-indigo-600
-                        Warna Hover: bg-slate-800 
-                      */
-                      className="w-full py-3 bg-indigo-600 text-white text-sm font-bold rounded-xl hover:bg-slate-800 border border-transparent hover:border-slate-700 transition-all duration-300 flex items-center justify-center gap-2"
-                    >
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-full py-3 bg-indigo-600 text-white text-sm font-bold rounded-xl hover:bg-slate-800 border border-transparent hover:border-slate-700 transition-all duration-300 flex items-center justify-center gap-2">
                       View Project Details
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -438,12 +397,11 @@ function App() {
             ))}
           </div>
 
-          {/* Tombol See All Portfolio - Muncul hanya jika belum diklik dan total project > 3 */}
           {!showAllProjects && allProjects.length > 3 && (
             <div className="mt-8 flex justify-center">
               <button 
                 onClick={() => setShowAllProjects(true)}
-                className="px-10 py-3 bg-indigo-900 text-white font-bold rounded-full hover:bg-slate-800 border-2 border-indigo-600 transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                className="px-6 py-1 md:px-8 md:py-2 bg-indigo-900 text-white font-bold rounded-full hover:bg-slate-800 border-2 border-indigo-600 transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)]">
                 See All Portfolio
               </button>
             </div>
@@ -451,18 +409,15 @@ function App() {
         </div>
       </section>
 
-      {/* --- SKILLS SECTION --- */}
+      {/* SKILLS SECTION */}
       <section id="skills" className="min-h-[100dvh] py-16 px-6 bg-slate-800/20 relative flex flex-col justify-center overflow-hidden">
-        {/* Dekorasi Background */}
         <div ref={skillAnim.elementRef} className={`max-w-6xl mx-auto w-full -mt-12 md:-mt-16 ${skillAnim.animationClass}`}>
 
-            {/* Heading */}
             <div className="text-center mb-10">
               <h2 className="text-indigo-500 font-bold tracking-[0.2em] uppercase text-lg mb-2">Capabilities</h2>
               <h1 className="text-3xl md:text-5xl font-black text-white">Technical Skills</h1>
             </div>
 
-            {/* Skills Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
               {skillCategories.map((cat, idx) => (
                 <div key={idx} className="bg-slate-900/40 p-6 md:p-8 rounded-3xl border border-slate-800 shadow-xl">
@@ -481,12 +436,8 @@ function App() {
                           <span className="text-indigo-400 font-bold">{skill.level}%</span>
                         </div>
                         
-                        {/* Progress Bar Container */}
                         <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
-                          <div 
-                            className="h-full bg-gradient-to-r from-indigo-600 to-blue-500 rounded-full transition-all duration-1000 ease-out"
-                            style={{ width: `${skill.level}%` }}
-                          />
+                          <div className="h-full bg-gradient-to-r from-indigo-600 to-blue-500 rounded-full transition-all duration-1000 ease-out" style={{ width: `${skill.level}%` }}/>
                         </div>
                       </div>
                     ))}
@@ -495,7 +446,6 @@ function App() {
               ))}
             </div>
 
-            {/* Quote/Subtext agar frame tidak terlihat kosong di layar lebar */}
             <p className="text-center text-slate-500 text-sm mt-12 italic max-w-2xl mx-auto">
               "Terus belajar dan beradaptasi dengan teknologi terbaru untuk memberikan solusi yang paling efisien."
             </p>
@@ -504,21 +454,18 @@ function App() {
 
       {/* --- CONTACT SECTION --- */}
       <section id="contact" className="min-h-[100dvh] py-16 px-6 bg-slate-950 relative flex flex-col justify-center overflow-hidden">
-        {/* Background Glow Premium */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] -z-10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] -z-10">
+        </div>
 
-        <div 
-          ref={contactAnim.elementRef} // Gunakan contactAnim yang sudah dideklarasikan
-          className={`max-w-6xl mx-auto w-full -mt-10 md:-mt-16 ${contactAnim.animationClass}`}
-        >
-          {/* Heading */}
+        <div ref={contactAnim.elementRef} className={`max-w-6xl mx-auto w-full -mt-10 md:-mt-16 ${contactAnim.animationClass}`}>
+          
           <div className="text-center mb-12">
             <h2 className="text-indigo-500 font-bold tracking-[0.2em] uppercase text-lg mb-2">Get In Touch</h2>
             <h1 className="text-3xl md:text-5xl font-black text-white">Let's Work Together</h1>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-stretch">
-            {/* Kolom Kiri: Contact Info (2/5) */}
+            
             <div className="lg:col-span-2 space-y-6">
               <div className="bg-slate-900/40 p-8 rounded-3xl border border-slate-800 h-full flex flex-col justify-between">
                 <div>
@@ -529,7 +476,7 @@ function App() {
                   
                   <div className="space-y-6">
                     {[
-                      { icon: <Mail className="text-indigo-500" size={20} />, label: "Email", value: "muhammadraynar@example.com", href: "mailto:muhammadraynar@example.com" },
+                      { icon: <Mail className="text-indigo-500" size={20} />, label: "Email", value: "raynarham23@gmail.com", href: "mailto:raynarham23@gmail.com" },
                       { icon: <Linkedin className="text-indigo-500" size={20} />, label: "LinkedIn", value: "Muhammad Raynar Hammam", href: "#" },
                       { icon: <Github className="text-indigo-500" size={20} />, label: "GitHub", value: "mraynarr", href: "#" },
                     ].map((item, i) => (
@@ -554,50 +501,30 @@ function App() {
               </div>
             </div>
 
-            {/* Kolom Kanan: Contact Form (3/5) */}
             <div className="lg:col-span-3">
               <form className="bg-slate-900/40 p-8 rounded-3xl border border-slate-800 shadow-2xl h-full space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="block text-xs font-bold text-slate-400 uppercase ml-1 mb-3">Nama Lengkap</label>
-                    <input 
-                      type="text" 
-                      placeholder="Masukkan nama Anda"
-                      className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                    />
+                    <input type="text" placeholder="Masukkan nama Anda" className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"/>
                   </div>
                   <div className="space-y-2">
                     <label className="block text-xs font-bold text-slate-400 uppercase ml-1 mb-3">Alamat Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="email@example.com"
-                      className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                    />
+                    <input type="email" placeholder="email@example.com" className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"/>
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="block text-xs font-bold text-slate-400 uppercase ml-1 mb-3">Subjek</label>
-                  <input 
-                    type="text" 
-                    placeholder="Tujuan pesan Anda"
-                    className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
-                  />
+                  <input type="text" placeholder="Tujuan pesan Anda" className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"/>
                 </div>
 
                 <div className="space-y-2">
                   <label className="block text-xs font-bold text-slate-400 uppercase ml-1 mb-3">Pesan</label>
-                  <textarea 
-                    rows="4"
-                    placeholder="Ceritakan proyek atau ide Anda..."
-                    className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all resize-none"
-                  ></textarea>
+                  <textarea rows="4" placeholder="Ceritakan proyek atau ide Anda..." className="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all resize-none"></textarea>
                 </div>
 
-                <button 
-                  type="submit"
-                  className="w-full py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-slate-800 border-2 border-transparent hover:border-slate-700 transition-all duration-300 shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-3 group"
-                >
+                <button type="submit" className="w-full py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-slate-800 border-2 border-transparent hover:border-slate-700 transition-all duration-300 shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-3 group">
                   Kirim Pesan
                   <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5l7 7m0 0l-7 7m7-7H3" />
@@ -614,7 +541,6 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
             
-            {/* Kolom 1: Brand & Bio */}
             <div className="max-w-xs">
               <div className="text-2xl font-black tracking-tighter text-white mb-6">
                 RAYNAR.<span className="text-indigo-600">ID</span>
@@ -625,9 +551,8 @@ function App() {
               </p>
             </div>
 
-            {/* Kolom 2: Quick Links */}
             <div>
-              <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Pendidikan</h4>
+              <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-md">Pendidikan</h4>
               <ul className="space-y-4">
                 {['UPN Veteran Jawa Timur', 'SMK Negeri 2 Surabaya', 'SMP Negeri 26 Surabaya'].map((item) => (
                   <li key={item}>
@@ -639,9 +564,8 @@ function App() {
               </ul>
             </div>
 
-            {/* Kolom 3: Social & Connect */}
             <div>
-              <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Connect</h4>
+              <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-md">Connect</h4>
               <div className="flex gap-4">
                 {[
                   { 
@@ -665,7 +589,7 @@ function App() {
                   },
                   { 
                     icon: <Mail size={18} />, 
-                    url: "mailto:muhammadraynar@example.com", 
+                    url: "mailto:raynarham23@gmail.com", 
                     color: "hover:bg-indigo-600" 
                   }
                 ].map((social, i) => (
@@ -684,7 +608,6 @@ function App() {
             </div>
           </div>
 
-          {/* Bottom Bar: Copyright */}
           <div className="pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-600 text-xs">
               © {new Date().getFullYear()} Muhammad Raynar Hammam. All rights reserved.
