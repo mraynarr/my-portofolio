@@ -218,8 +218,8 @@ function App() {
               Information Systems Undergraduate specializing in data analytics and software development.
             </p>
             <div className="flex flex-row gap-4">
-              <a href="raynarham23@gmail.com" className="flex-1 sm:flex-none px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all text-center">
-                Hubungi Saya
+              <a href="https://wa.me/6289502390206?text=Halo%20Raynar,%20saya%20tertarik%20untuk%20bekerja%20sama%20dengan%20Anda." target="_blank" rel="noopener noreferrer" className="flex-1 sm:flex-none px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-all text-center">
+                Hubungi saya
               </a>
               <a href="#projects" className="flex-1 sm:flex-none px-8 py-3 border-2 border-slate-500 text-slate-300 font-bold rounded-xl hover:border-indigo-500 transition-all text-center">
                 Lihat Project
