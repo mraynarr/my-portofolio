@@ -127,28 +127,28 @@ function App() {
   {
     category: "Frontend Dev",
     skills: [
-      { name: "React JS", icon: "/public/img/logo-languange/front-end/react.png" },
-      { name: "Tailwind", icon: "/public/img/logo-languange/front-end/tailwind.png" },
-      { name: "JavaScript", icon: "/public/img/logo-languange/front-end/js.png" },
-      { name: "Bootstrap", icon: "/public/img/logo-languange/front-end/bootstrap.png" },
+      { name: "React JS", icon: "/img/logo-languange/front-end/react.png" },
+      { name: "Tailwind", icon: "/img/logo-languange/front-end/tailwind.png" },
+      { name: "JavaScript", icon: "/img/logo-languange/front-end/js.png" },
+      { name: "Bootstrap", icon: "/img/logo-languange/front-end/bootstrap.png" },
     ]
   },
   {
     category: "Backend Dev",
     skills: [
-      { name: "PHP", icon: "/public/img/logo-languange/back-end/php.png" },
-      { name: "Laravel", icon: "/public/img/logo-languange/back-end/laravel.png" },
-      { name: "MySQL", icon: "/public/img/logo-languange/back-end/mysql.png" },
-      { name: "Java", icon: "/public/img/logo-languange/back-end/java.png" },
+      { name: "PHP", icon: "/img/logo-languange/back-end/php.png" },
+      { name: "Laravel", icon: "/img/logo-languange/back-end/laravel.png" },
+      { name: "MySQL", icon: "/img/logo-languange/back-end/mysql.png" },
+      { name: "Java", icon: "/img/logo-languange/back-end/java.png" },
     ]
   },
   {
     category: "Data & Analysis",
     skills: [
-      { name: "Python", icon: "/public/img/logo-languange/data-analystic/python.png" },
-      { name: "Looker Studio", icon: "/public/img/logo-languange/data-analystic/looker.png" },
-      { name: "Excel", icon: "/public/img/logo-languange/data-analystic/excel.png" },
-      { name: "Google Collab", icon: "/public/img/logo-languange/data-analystic/collab.png" },
+      { name: "Python", icon: "/img/logo-languange/data-analystic/python.png" },
+      { name: "Looker Studio", icon: "/img/logo-languange/data-analystic/looker.png" },
+      { name: "Excel", icon: "/img/logo-languange/data-analystic/excel.png" },
+      { name: "Google Collab", icon: "/img/logo-languange/data-analystic/collab.png" },
     ]
   }
   ];
@@ -158,7 +158,7 @@ function App() {
     title: "Data Analyst Bootcamp Using Excel and SQL Analisis Data",
     issuer: "Karirnex",
     date: "Jan 2026",
-    image: "/public/img/sertifikat/Data Analyst Bootcamp Using Excel and SQL.jpg",
+    image: "/img/sertifikat/Data Analyst Bootcamp Using Excel and SQL.jpg",
     credentialUrl: "https://www.dicoding.com/certificates/...", 
     tech: ["Looker Studio", "Excel", "DB Browser SQL"]
   },
@@ -166,7 +166,7 @@ function App() {
     title: "Intro to Data Analytics",
     issuer: "Revou",
     date: "Feb 2026",
-    image: "/public/img/sertifikat/Intro to Data Analytics.jpg",
+    image: "/img/sertifikat/Intro to Data Analytics.jpg",
     credentialUrl: "https://www.Dicoding Indonesia.org/certification/...",
     tech: ["Excel", "Looker Studio"]
   },
@@ -174,7 +174,7 @@ function App() {
     title: "Python For Data Analysis",
     issuer: "My Skill",
     date: "Feb 2026",
-    image: "/public/img/sertifikat/Python Introduction for Data Analysis.jpg",
+    image: "/img/sertifikat/Python Introduction for Data Analysis.jpg",
     credentialUrl: "https://www.freecodecamp.org/certification/...",
     tech: ["Power BI", "Python", "Google Collab"]
   },
@@ -182,7 +182,7 @@ function App() {
     title: "UI/UX Design",
     issuer: "My Skill",
     date: "Jan 2025",
-    image: "/public/img/sertifikat/UI:UX Design Fundamentals.jpg",
+    image: "/img/sertifikat/UI:UX Design Fundamentals.jpg",
     credentialUrl: "https://www.freecodecamp.org/certification/...",
     tech: ["Figma"]
   },
@@ -190,7 +190,7 @@ function App() {
     title: "Back End Developer",
     issuer: "Dicoding Indonesia",
     date: "Des 2024",
-    image: "/public/img/sertifikat/Back-End | Deploy Aplikasi dengan Aman.jpg",
+    image: "/img/sertifikat/Back-End | Deploy Aplikasi dengan Aman.jpg",
     credentialUrl: "https://www.freecodecamp.org/certification/...",
     tech: ["GitLab CI/CD"]
   },
@@ -198,7 +198,7 @@ function App() {
     title: "",
     issuer: "Flutter UI Android Development",
     date: "Des 2024",
-    image: "/public/img/sertifikat/Flutter | Ciptakan Animasi Epik dengan Animation.jpg",
+    image: "/img/sertifikat/Flutter | Ciptakan Animasi Epik dengan Animation.jpg",
     credentialUrl: "https://www.freecodecamp.org/certification/...",
     tech: ["Flutter"]
   },
