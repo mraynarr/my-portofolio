@@ -10,39 +10,19 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation'; 
 
 function App() {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [showAllCerts, setShowAllCerts] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
   const { tabStyle, containerRef, handleMouseEnter, resetTab } = useNavAnimation('.contact-btn');
-  
   const heroAnim = useScrollAnimation();
   const aboutAnim = useScrollAnimation();
   const projectAnim = useScrollAnimation();
   const skillAnim = useScrollAnimation(); 
+  const certAnim = useScrollAnimation();
   const contactAnim = useScrollAnimation();
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      const timer = setTimeout(() => resetTab(), 150);
-      return () => clearTimeout(timer);
-    }
-  }, [isMenuOpen, resetTab]);
-
-  useEffect(() => {
-    const sections = document.querySelectorAll('section');
-    const options = { threshold: 0.5 };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, options);
-
-    sections.forEach((section) => observer.observe(section));
-    return () => sections.forEach((section) => observer.unobserve(section));
-  }, []);
-
-  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const allProjects = [
     {
@@ -56,7 +36,7 @@ function App() {
         "/img/shoping-kuy/sk-kategori.png", 
         "/img/shoping-kuy/sk-contact.png", 
       ],
-      link: "http://localhost/shoping%20kuy/landing.php"
+      link: "https://github.com/mraynarr/my-portofolio" // Ganti localhost agar bisa dibuka orang lain
     }, 
     {
       title: "Rental Mobil & Motor - Laravel",
@@ -69,7 +49,7 @@ function App() {
         "/img/rental/rental-about.png",  
         "/img/rental/rental-admin.png",  
       ],
-      link: "http://localhost/shoping%20kuy/landing.php"
+      link: "https://github.com/mraynarr/my-portofolio"
     }, 
     {
       title: "FMCG Sales Performance Diatribution Analysis",
@@ -82,7 +62,7 @@ function App() {
         "/img/data1/looker4.png", 
         "/img/data1/data5.png", 
       ],
-      link: "http://localhost/shoping%20kuy/landing.php"
+      link: "https://github.com/mraynarr/my-portofolio"
     }, 
     {
       title: "Website UKM - Wordpress",
@@ -94,7 +74,7 @@ function App() {
         "/img/ukm/ukm-bidang.png", 
         "/img/ukm/ukm-about.png", 
       ],
-      link: "http://localhost/shoping%20kuy/landing.php"
+      link: "https://github.com/mraynarr/my-portofolio"
     }, 
     {
       title: "Final Project Design - Figma",
@@ -107,7 +87,7 @@ function App() {
         "/img/figma1/fp-1.png",
         "/img/figma1/fp-2.png",
       ],
-      link: "http://localhost/shoping%20kuy/landing.php"
+      link: "https://github.com/mraynarr/my-portofolio"
     }, 
     {
       title: "Portofolio - TailwindCSS",
@@ -118,97 +98,116 @@ function App() {
         "/img/pf/pf-contact.png",  
         "/img/pf/pf-blog.png",  
       ],
-      link: "http://localhost/shoping%20kuy/landing.php"
+      link: "https://github.com/mraynarr/my-portofolio"
     }, 
-
   ];
 
   const skillCategories = [
-  {
-    category: "Frontend Dev",
-    skills: [
-      { name: "React JS", icon: "/img/logo-languange/front-end/react.png" },
-      { name: "Tailwind", icon: "/img/logo-languange/front-end/tailwind.png" },
-      { name: "JavaScript", icon: "/img/logo-languange/front-end/js.png" },
-      { name: "Bootstrap", icon: "/img/logo-languange/front-end/bootstrap.png" },
-    ]
-  },
-  {
-    category: "Backend Dev",
-    skills: [
-      { name: "PHP", icon: "/img/logo-languange/back-end/php.png" },
-      { name: "Laravel", icon: "/img/logo-languange/back-end/Laravel.png" },
-      { name: "MySQL", icon: "/img/logo-languange/back-end/mysql.png" },
-      { name: "Java", icon: "/img/logo-languange/back-end/java.png" },
-    ]
-  },
-  {
-    category: "Data & Analysis",
-    skills: [
-      { name: "Python", icon: "/img/logo-languange/data-analystic/python.png" },
-      { name: "Looker Studio", icon: "/img/logo-languange/data-analystic/looker.png" },
-      { name: "Excel", icon: "/img/logo-languange/data-analystic/excel.png" },
-      { name: "Google Collab", icon: "/img/logo-languange/data-analystic/collab.png" },
-    ]
-  }
+    {
+      category: "Frontend Dev",
+      skills: [
+        { name: "React JS", icon: "/img/logo-languange/front-end/react.png" },
+        { name: "Tailwind", icon: "/img/logo-languange/front-end/tailwind.png" },
+        { name: "JavaScript", icon: "/img/logo-languange/front-end/js.png" },
+        { name: "Bootstrap", icon: "/img/logo-languange/front-end/bootstrap.png" },
+      ]
+    },
+    {
+      category: "Backend Dev",
+      skills: [
+        { name: "PHP", icon: "/img/logo-languange/back-end/php.png" },
+        { name: "Laravel", icon: "/img/logo-languange/back-end/Laravel.png" },
+        { name: "MySQL", icon: "/img/logo-languange/back-end/mysql.png" },
+        { name: "Java", icon: "/img/logo-languange/back-end/java.png" },
+      ]
+    },
+    {
+      category: "Data & Analysis",
+      skills: [
+        { name: "Python", icon: "/img/logo-languange/data-analystic/python.png" },
+        { name: "Looker Studio", icon: "/img/logo-languange/data-analystic/looker.png" },
+        { name: "Excel", icon: "/img/logo-languange/data-analystic/excel.png" },
+        { name: "Google Collab", icon: "/img/logo-languange/data-analystic/collab.png" },
+      ]
+    }
   ];
 
   const allCertifications = [
-  {
-    title: "Data Analyst Bootcamp Using Excel and SQL Analisis Data",
-    issuer: "Karirnex",
-    date: "Jan 2026",
-    image: "/img/sertifikat/Data Analyst Bootcamp Using Excel and SQL.jpg",
-    credentialUrl: "https://www.dicoding.com/certificates/...", 
-    tech: ["Looker Studio", "Excel", "DB Browser SQL"]
-  },
-  {
-    title: "Intro to Data Analytics",
-    issuer: "Revou",
-    date: "Feb 2026",
-    image: "/img/sertifikat/Intro to Data Analytics.jpg",
-    credentialUrl: "https://www.Dicoding Indonesia.org/certification/...",
-    tech: ["Excel", "Looker Studio"]
-  },
-  {
-    title: "Python For Data Analysis",
-    issuer: "My Skill",
-    date: "Feb 2026",
-    image: "/img/sertifikat/Python Introduction for Data Analysis.jpg",
-    credentialUrl: "https://www.freecodecamp.org/certification/...",
-    tech: ["Power BI", "Python", "Google Collab"]
-  },
-  {
-    title: "UI/UX Design",
-    issuer: "My Skill",
-    date: "Jan 2025",
-    image: "/img/sertifikat/UI:UX Design Fundamentals.jpg",
-    credentialUrl: "https://www.freecodecamp.org/certification/...",
-    tech: ["Figma"]
-  },
-  {
-    title: "Back End Developer",
-    issuer: "Dicoding Indonesia",
-    date: "Des 2024",
-    image: "/img/sertifikat/Back-End | Deploy Aplikasi dengan Aman.jpg",
-    credentialUrl: "https://www.freecodecamp.org/certification/...",
-    tech: ["GitLab CI/CD"]
-  },
-  {
-    title: "",
-    issuer: "Flutter UI Android Development",
-    date: "Des 2024",
-    image: "/img/sertifikat/Flutter | Ciptakan Animasi Epik dengan Animation.jpg",
-    credentialUrl: "https://www.freecodecamp.org/certification/...",
-    tech: ["Flutter"]
-  },
-];
+    {
+      title: "Data Analyst Bootcamp Using Excel and SQL Analisis Data",
+      issuer: "Karirnex",
+      date: "Jan 2026",
+      image: "/img/sertifikat/Data Analyst Bootcamp Using Excel and SQL.jpg",
+      credentialUrl: "https://github.com/mraynarr/my-portofolio", 
+      tech: ["Looker Studio", "Excel", "DB Browser SQL"]
+    },
+    {
+      title: "Intro to Data Analytics",
+      issuer: "Revou",
+      date: "Feb 2026",
+      image: "/img/sertifikat/Intro to Data Analytics.jpg",
+      credentialUrl: "https://github.com/mraynarr/my-portofolio",
+      tech: ["Excel", "Looker Studio"]
+    },
+    {
+      title: "Python For Data Analysis",
+      issuer: "My Skill",
+      date: "Feb 2026",
+      image: "/img/sertifikat/Python Introduction for Data Analysis.jpg",
+      credentialUrl: "https://github.com/mraynarr/my-portofolio",
+      tech: ["Power BI", "Python", "Google Collab"]
+    },
+    {
+      title: "UI/UX Design",
+      issuer: "My Skill",
+      date: "Jan 2025",
+      image: "/img/sertifikat/UI:UX Design Fundamentals.jpg", 
+      credentialUrl: "https://github.com/mraynarr/my-portofolio",
+      tech: ["Figma"]
+    },
+    {
+      title: "Back End Developer",
+      issuer: "Dicoding Indonesia",
+      date: "Des 2024",
+      image: "/img/sertifikat/Back-End | Deploy Aplikasi dengan Aman.jpg",
+      credentialUrl: "https://github.com/mraynarr/my-portofolio",
+      tech: ["GitLab CI/CD"]
+    },
+    {
+      title: "Flutter UI Android Development",
+      issuer: "Dicoding Indonesia",
+      date: "Des 2024",
+      image: "/img/sertifikat/Flutter | Ciptakan Animasi Epik dengan Animation.jpg",
+      credentialUrl: "https://github.com/mraynarr/my-portofolio",
+      tech: ["Flutter"]
+    },
+  ];
 
-  const visibleProjects = showAllProjects ? allProjects : allProjects.slice(0, 6);
-  const featuredProjects = allProjects.slice(0, 3);
-  const remainingProjects = allProjects.slice(3);
-  const [showAllCerts, setShowAllCerts] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const visibleProjects = showAllProjects ? allProjects : allProjects.slice(0, 3);
+  const visibleCerts = showAllCerts ? allCertifications : allCertifications.slice(0, 3);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      const timer = setTimeout(() => resetTab(), 150);
+      return () => clearTimeout(timer);
+    }
+  }, [isMenuOpen, resetTab]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section');
+    const options = { threshold: 0.3 }; 
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
 
   return (
     <div className="bg-slate-950 overflow-x-hidden">
@@ -234,6 +233,7 @@ function App() {
               <a href="#about" onMouseEnter={handleMouseEnter} className="px-5 py-2 rounded-full z-10">About</a>
               <a href="#projects" onMouseEnter={handleMouseEnter} className="px-5 py-2 rounded-full z-10">Projects</a>
               <a href="#skills" onMouseEnter={handleMouseEnter} className="px-5 py-2 rounded-full z-10">Skills</a>
+              <a href="#certifications" onMouseEnter={handleMouseEnter} className="px-5 py-2 rounded-full z-10">Certifications</a>
               <a href="#contact" onMouseEnter={handleMouseEnter} className="contact-btn px-6 py-2 rounded-full z-10">
                 Contact Me
               </a>  
@@ -383,7 +383,6 @@ function App() {
         
         <div ref={projectAnim.elementRef} className={`max-w-6xl mx-auto w-full ${projectAnim.animationClass} -mt-4 md:-mt-16`}>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-
             <div className="text-left">
               <h2 className="text-indigo-500 font-bold tracking-[0.2em] uppercase text-lg mb-2">Portfolio</h2>
               <h1 className="text-4xl md:text-5xl font-black text-white">Featured Projects</h1>
@@ -394,7 +393,7 @@ function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(showAllProjects ? allProjects : allProjects.slice(0, 3)).map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <div key={index} className="group relative bg-slate-900/40 rounded-3xl border border-slate-700 overflow-hidden hover:border-indigo-500/50 transition-all duration-500 shadow-2xl flex flex-col">
 
                 <div className="relative h-52 w-full overflow-hidden bg-slate-800 group/swiper">
@@ -408,8 +407,7 @@ function App() {
                     {project.images.map((img, imgIdx) => (
                       <SwiperSlide key={imgIdx}>
                         <div className="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                        <img src={img} alt={`${project.title} - ${imgIdx}`} className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
-                        />
+                        <img src={img} alt={`${project.title} - ${imgIdx}`} className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110" />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -420,7 +418,7 @@ function App() {
                       transform: scale(0.35);
                       transition: all 0.3s;
                       opacity: 0;
-                      background: rgba(79, 70, 229, 0.6); /* Warna Indigo transparan */
+                      background: rgba(79, 70, 229, 0.6);
                       padding: 40px;
                       border-radius: 50%;
                     }
@@ -467,35 +465,25 @@ function App() {
             ))}
           </div>
 
-            {allProjects.length > 3 && (
-              <div className="mt-12 flex justify-center">
-                <button 
-                  onClick={() => {
-                    setShowAllProjects(!showAllProjects);
-                    // Opsional: Scroll kembali ke atas section projects saat di-close
-                    if (showAllProjects) {
-                      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="px-6 py-1 md:px-8 md:py-2 bg-indigo-900 text-white font-bold rounded-full hover:bg-slate-800 border-2 border-indigo-600 transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)] flex items-center gap-2 group">
-                  {showAllProjects ? (
-                    <>
-                      Show Less 
-                      <svg className="w-4 h-4 transform rotate-180 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </>
-                  ) : (
-                    <>
-                      See All Portfolio
-                      <svg className="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </>
-                  )}
-                </button>
-              </div>
-            )}
+          {/* Tombol See All Tetap Sama */}
+          {allProjects.length > 3 && (
+            <div className="mt-12 flex justify-center">
+              <button 
+                onClick={() => {
+                  setShowAllProjects(!showAllProjects);
+                  if (showAllProjects) {
+                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="px-6 py-1 md:px-8 md:py-2 bg-indigo-900 text-white font-bold rounded-full hover:bg-slate-800 border-2 border-indigo-600 transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)] flex items-center gap-2 group">
+                {showAllProjects ? (
+                  <>Show Less <svg className="w-4 h-4 transform rotate-180 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg></>
+                ) : (
+                  <>See All Portfolio <svg className="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg></>
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -548,14 +536,14 @@ function App() {
       <section id="certifications" className="min-h-screen py-24 px-6 bg-slate-950 relative overflow-hidden border-t border-slate-900/50">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] -z-10"></div>
         
-        <div ref={useScrollAnimation().elementRef} className="max-w-6xl mx-auto w-full">
+        <div ref={certAnim.elementRef} className={`max-w-6xl mx-auto w-full ${certAnim.animationClass}`}>
           <div className="text-center mb-16">
             <h2 className="text-indigo-500 font-bold tracking-[0.2em] uppercase text-lg mb-2">Recognition</h2>
             <h1 className="text-4xl md:text-5xl font-black text-white">Certifications</h1>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(showAllCerts ? allCertifications : allCertifications.slice(0, 3)).map((cert, index) => (
+            {visibleCerts.map((cert, index) => (
               <div key={index} className="group bg-slate-900/40 rounded-3xl border border-slate-800 overflow-hidden hover:border-indigo-500/50 transition-all duration-500 shadow-xl flex flex-col">
                 
                 <div className="relative h-48 w-full overflow-hidden bg-slate-800">
