@@ -137,7 +137,7 @@ function App() {
     category: "Backend Dev",
     skills: [
       { name: "PHP", icon: "/img/logo-languange/back-end/php.png" },
-      { name: "Laravel", icon: "/img/logo-languange/back-end/laravel.png" },
+      { name: "Laravel", icon: "/img/logo-languange/back-end/Laravel.png" },
       { name: "MySQL", icon: "/img/logo-languange/back-end/mysql.png" },
       { name: "Java", icon: "/img/logo-languange/back-end/java.png" },
     ]
