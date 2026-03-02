@@ -194,20 +194,20 @@ function App() {
   }, [isMenuOpen, resetTab]);
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section');
-    const options = { threshold: 0.3 }; 
+      const sections = document.querySelectorAll('section');
+      const options = { threshold: 0.2 }; 
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, options);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.target.id) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      }, options);
 
-    sections.forEach((section) => observer.observe(section));
-    return () => sections.forEach((section) => observer.unobserve(section));
-  }, []);
+      sections.forEach((section) => observer.observe(section));
+      return () => sections.forEach((section) => observer.unobserve(section));
+    }, []);
 
   return (
     <div className="bg-slate-950 overflow-x-hidden">
@@ -250,7 +250,6 @@ function App() {
 
           <div className={`fixed inset-x-0 top-0 bg-slate-900 shadow-2xl transition-all duration-500 md:hidden z-[60] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
             <div className="relative flex flex-col items-center pt-24 pb-12 space-y-4">
-              {/* Hapus div background lama yang menggunakan tabStyle.top karena kita sudah pakai bg-indigo-600 dinamis di bawah */}
 
               {['home', 'about', 'projects', 'skills', 'certifications', 'contact'].map((item) => (
                 <a
@@ -263,7 +262,6 @@ function App() {
                       : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
                   }`}
                 >
-                  {/* Membuat huruf pertama menjadi kapital secara otomatis */}
                   {item === 'contact' ? 'Contact Me' : item.charAt(0).toUpperCase() + item.slice(1)}
                 </a>
               ))}
